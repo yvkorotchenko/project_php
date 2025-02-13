@@ -25,8 +25,8 @@ jobs:
       # Крок 3: Створення Docker образу
       - name: Build Docker image
         run: |
-          docker build -t ghcr.io/${{ github.actor }}/my-java-app:${{ github.sha }} -f docker/Dockerfile .
+          docker build -t ghcr.io/${{ github.actor }}/my-php-laravel:${{ github.sha }} -f docker/Dockerfile .
 
       # Крок 4: Публікація Docker образу в GitHub Container Registry
       - name: Push Docker image
-        run: docker push ghcr.io/${{ github.actor }}/my-java-app:${{ github.sha }}
+        run: docker push ghcr.io/${{ github.actor }}/my-php-laravel:${{ github.sha }}
