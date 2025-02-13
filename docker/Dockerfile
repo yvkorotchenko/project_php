@@ -1,10 +1,8 @@
 FROM php:8.0.5-fpm
 
-ARG CI_PROJECT_NAME
-
 ENV MIX_BASE_API=/api
 
-COPY $CI_PROJECT_NAME /var/www/html
+COPY . /var/www/html
 
 RUN apt-get update -y && apt-get install -y nginx && apt-get install -y libjpeg-dev libpng-dev libfreetype6-dev && apt-get install -y wget && apt-get install -y zip unzip npm git
 
@@ -32,6 +30,8 @@ COPY docker/entrypoint.sh /usr/bin/entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 
 WORKDIR /var/www/html
+
+COPY .env.example /var/www/html/.env
 
 RUN composer install
 
