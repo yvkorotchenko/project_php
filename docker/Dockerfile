@@ -36,6 +36,9 @@ COPY .env.example /var/www/html/.env
 # Надання прав доступу для entrypoint.sh
 RUN chmod +x /usr/bin/entrypoint.sh
 
+RUN mkdir -p /var/www/html/database && \
+    chmod -R 777 /var/www/html/database
+
 # Встановлюємо робочу директорію
 WORKDIR /var/www/html
 
