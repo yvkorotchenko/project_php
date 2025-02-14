@@ -42,6 +42,8 @@ WORKDIR /var/www/html
 # Встановлюємо PHP залежності за допомогою Composer
 RUN composer install --no-interaction --prefer-dist
 
+RUN php artisan key:generate
+
 # Встановлюємо Node.js залежності
 RUN npm install --legacy-peer-deps
 
